@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.myspringdemo.mapper.EmployeeMapper">
+
+    <resultMap id="EmployeeResultMap" type="com.example.myspringdemo.entity.Employee">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="phone" property="phone"/>
+        <result column="sex" property="sex"/>
+        <result column="idNumber" property="idNumber"/>
+        <result column="status" property="status"/>
+        <result column="createTime" property="createTime"/>
+        <result column="updateTime" property="updateTime"/>
+        <result column="createUser" property="createUser"/>
+        <result column="updateUser" property="updateUser"/>
+
+    </resultMap>
+
+    <select id="getByUser" resultMap="EmployeeResultMap">
+        SELECT
+            e.id,
+            e.name,
+            e.username,
+            e.password,
+            e.phone,
+            e.sex,
+            e.id_number,
+            e.status
+        FROM
+            employee e
+        WHERE
+            e.username = #{emp_userName}
+    </select>
+
+    <select id="getByUserId" resultMap="EmployeeResultMap">
+        SELECT
+            e.id,
+            e.name,
+            e.username,
+            e.password,
+            e.phone,
+            e.sex,
+            e.id_number,
+            e.status
+        FROM
+            employee e
+        WHERE
+            e.id=#{id}
+    </select>
+
+    <update id="updateByUser">
+        update
+            employee
+        set
+            <if test="name!=null and name!=''">
+                name=#{name},
+            </if>
+            <if test="username!=null and username !=''">
+                username=#{username},
+            </if>
+            <if test="password!=null and password!=''">
+            password=#{password},
+            </if>
+            <if test="phone!=null and phone!=''">
+            phone=#{phone},
+            </if>
+            sex=#{sex},
+            status=#{status}
+        where
+            id=#{id}
+    </update>
+
+
+    <insert id="savaUser">
+        insert into
+            employee
+            (id, name, username, password, phone, sex, id_number,status,create_time,update_time,create_user,update_user)
+        values
+            (#{id},#{name},#{username},#{password},#{phone},#{sex},#{idNumber},'1',#{createTime},#{updateTime},#{createUser},#{updateUser})
+    </insert>
+</mapper>
