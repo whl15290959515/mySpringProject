@@ -8,17 +8,19 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-@SpringBootApplication
 @Slf4j
 @ServletComponentScan //过滤器注解
 @EnableTransactionManagement
 @MapperScan(basePackages="com.example.myspringdemo.mapper")
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, SecurityFilterAutoConfiguration.class})
 public class MySpringDemoApplication {
 
     public static void main(String[] args) {
@@ -26,6 +28,11 @@ public class MySpringDemoApplication {
         SpringApplication.run(MySpringDemoApplication.class, args);
         log.info("启动成功");
 
+//        try {
+//            Runtime.getRuntime().exec("cmd /c start http://localhost:8086/pages/login.html");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         // String driverName="oracle.jdbc.driver.OracleDriver";//加载驱动
         // String dbURL="jdbc:oracle:thin:@127.0.0.1:1521:ORCL";//localhost代表本机，也可以是 127.0.0.1，可以填写具体IP

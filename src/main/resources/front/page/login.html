@@ -73,6 +73,8 @@
                     if(this.form.phone && this.form.code){
                         this.loading = true
                         const res = await loginApi(this.form)
+
+                        console.log(res)
                         this.loading = false
                         if(res.code === 1){
                             sessionStorage.setItem("userPhone",this.form.phone)

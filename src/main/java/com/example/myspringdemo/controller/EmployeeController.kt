@@ -39,8 +39,6 @@ open class EmployeeController {
         httpServletRequest.session.removeAttribute("employee")
         return R.success("退出成功")
     }
-
-
     //添加用户
     @PostMapping
     fun save(httpServletRequest: HttpServletRequest,@RequestBody employee: Employee): R<String>? {

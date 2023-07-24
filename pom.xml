@@ -26,6 +26,23 @@
     <dependencies>
 
 <!-- 接口文档-->
+        <!-- JWT依赖 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!--引入Knife4j的官方start包,该指南选择Spring Boot版本<3.0,开发者需要注意-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>

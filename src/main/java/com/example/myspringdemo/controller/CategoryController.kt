@@ -11,6 +11,10 @@ import com.example.myspringdemo.entity.Category
 import com.example.myspringdemo.service.CategoryService
 
 
+
+/*
+*分类管理
+* */
 @Log4j2
 @RestController
 @RequestMapping("/category")
@@ -20,6 +24,10 @@ class CategoryController {
     val categoryService: CategoryService? =null
 
 
+
+    /*
+    *新增菜品分类
+    * */
     @PostMapping
     fun save(@RequestBody category:Category): R<String>{
 
@@ -38,17 +46,13 @@ class CategoryController {
     }
 
     @DeleteMapping
-    fun  delete(ids:Long):R<String>{
-        categoryService?.remove(ids)
+    fun  deleteById(@RequestBody category: Category):R<String>{
+        categoryService?.remove(category.id)
         return R.success("删除成功")
     }
 
-
-
     @PutMapping
     fun delete(@RequestBody category: Category):R<String>{
-
-
         categoryService?.updateById(category)
         return R.success("修改成功")
     }

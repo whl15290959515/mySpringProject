@@ -32,8 +32,8 @@ class WebFilter : Filter {
 
         //定义不需要处理的请求路径
         val urls = arrayOf(
-            "/employee/login",
-            "/employee/logout",
+            "/employee/*",
+//            "/employee/logout",
             "/backend/**",
             "/front/**",
             "/common/**",
